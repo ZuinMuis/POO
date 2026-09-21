@@ -20,3 +20,4 @@ class Paciente
         def nombre(self, nombre:str)->None:
             self._nombre = nombre
             
+
