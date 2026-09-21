@@ -1,6 +1,6 @@
 class Paciente:
     
-PREVISIONES: set[str] = {"Fonasa", "Isapre", "Particular"}
+    PREVISIONES: set[str] = {"Fonasa", "Isapre", "Particular"}
 
 
 
