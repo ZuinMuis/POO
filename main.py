@@ -52,6 +52,11 @@ def agregar_paciente() -> None:
     print("Paciente agregado exitosamente.")
   
 
+def imprimir_paciente() -> None:
+    if pacientes:
+        for p in pacientes:
+            print(p)
+    
 
 def main():
     while True:

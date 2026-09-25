@@ -34,6 +34,8 @@ class Paciente:
     def edad(self, edad: int) -> None:
         self._edad = edad
 
+
+
     @property
     def prevision(self) -> str:
         return self._prevision
