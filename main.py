@@ -50,13 +50,21 @@ def agregar_paciente() -> None:
     paciente = Paciente(rut, nombre, edad, prevision)
     pacientes.append(paciente)
     print("Paciente agregado exitosamente.")
-  
+
+def buscar_paciente() -> paciente | None
+    rut = input ("Ingrese RUT del paciente a buscar: ")
+    for paciente in pacientes:
+        if paciente.rut == rut:
+            return paciente
+        return None
+
+
 
 def imprimir_paciente() -> None:
     if pacientes:
         for p in pacientes:
             print(p)
-    
+
 
 def main():
     while True:
