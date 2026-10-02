@@ -126,20 +126,29 @@ def imprimir_todos_los_pacientes() -> None:
     for i, p in enumerate(pacientes, start=1):
         print(f"{i}. {p}")
 
+def confirmar(mensaje: str) -> bool:
+ while True:
+     respuesta = input(f"{mensaje} (s/n): ").strip().lower()
+     if respuesta == 's':
+         return True
+     elif respuesta == 'n':
+         return False
+     else:
+         print("Opción no válida. Intente nuevamente.")
+
 
 def eliminar_paciente() -> None:
     print("\n--- Eliminar Paciente ---")
     paciente = buscar_paciente()
     if paciente:
-        confirmacion = input(f"¿Está seguro de que desea eliminar a {paciente.nombre}? (s/n): ").strip().lower()
-        if confirmacion == 's':
+        if confirmar(f"¿Está seguro de que desea eliminar a {paciente.nombre} (RUT: {paciente.rut})?"):
             pacientes.remove(paciente)
             print("Paciente eliminado exitosamente.")
         else:
             print("Operación cancelada.")
     else:
         print("Error: Paciente no encontrado.")
-
+    
 def editar_paciente() -> None:
     print("\n--- Editar Paciente ---")
     paciente = buscar_paciente()

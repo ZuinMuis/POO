@@ -16,7 +16,10 @@ class Paciente:
 
     @rut.setter
     def rut(self, rut: str) -> None:
-        self._rut = rut
+        if not isinstance(rut, str) or not rut.strip():
+            raise ValueError("RUT inválido.")
+        self._rut = rut.strip().upper()
+        
 
     @property
     def nombre(self) -> str:
@@ -24,7 +27,9 @@ class Paciente:
 
     @nombre.setter
     def nombre(self, nombre: str) -> None:
-        self._nombre = nombre
+        if not isinstance(nombre, str) or len(nombre.strip()) < 3:
+            raise ValueError("Nombre inválido debe de ser de 3 caracteres como mínimo.")
+        self._nombre = nombre.strip().upper()
 
     @property
     def edad(self) -> int:
@@ -32,9 +37,13 @@ class Paciente:
 
     @edad.setter
     def edad(self, edad: int) -> None:
+        if not isinstance(edad, int):
+            raise TypeError("la edad debe ser un numero entero.")
+        if edad < 0 or edad > 125:
+            raise ValueError("Edad inválida, debe estar entre 0 y 125.")
         self._edad = edad
-
-
+    
+    
 
     @property
     def prevision(self) -> str:
@@ -42,7 +51,14 @@ class Paciente:
 
     @prevision.setter
     def prevision(self, prevision: str) -> None:
+        if not isinstance(prevision,str):
+            raise TypeError("La previsión debe ser una cadena de texto.")
+        prevision = prevision.strip().capitalize()
+        if prevision not in self.PREVISIONES:
+            raise ValueError(f"Previsión inválida. Debe ser una de las siguientes: {', '.join(self.PREVISIONES)}.")
         self._prevision = prevision
+        
+
 
     def __str__(self) -> str:
         return f"Informacion del paciente:\nRUT: {self.rut}\nNombre: {self.nombre}\nEdad: {self.edad}\nPrevision: {self.prevision}"
